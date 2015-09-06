@@ -19,3 +19,11 @@ $factory->define(App\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Product::class, function ($faker) {
+    return [
+        'name' => $faker->company,
+        'price' => $faker->randomFloat(2, 0.99, 149.99),
+        'description' => $faker->paragraph(3),
+    ];
+});
