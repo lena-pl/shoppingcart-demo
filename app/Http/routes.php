@@ -14,7 +14,9 @@
 Route::get('/',                 ['as' => 'home',    'uses' => 'PagesController@home']);
 Route::get('about',             ['as' => 'about',   'uses' => 'PagesController@about']);
 Route::get('contact',           ['as' => 'contact', 'uses' => 'PagesController@contact']);
-Route::get('cart',              ['as' => 'cart', 'uses' => 'PagesController@cart']);
+
+// Cart methods
+Route::get('cart',              ['as' => 'cart', 'uses' => 'CartController@index']);
 
 Route::get('profile',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);

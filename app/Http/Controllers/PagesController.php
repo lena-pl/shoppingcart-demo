@@ -23,9 +23,4 @@ class PagesController extends Controller
     {
         return view('contact');
     }
-
-    function cart()
-    {
-        return view('cart');
-    }
 }
