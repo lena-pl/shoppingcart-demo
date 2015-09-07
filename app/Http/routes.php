@@ -13,7 +13,8 @@
 
 Route::get('/',                 ['as' => 'home',    'uses' => 'PagesController@home']);
 Route::get('about',             ['as' => 'about',   'uses' => 'PagesController@about']);
-Route::get('about/contact',     ['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::get('contact',           ['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::get('cart',              ['as' => 'cart', 'uses' => 'PagesController@cart']);
 
 Route::get('profile',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
@@ -36,3 +37,6 @@ Route::post('password/email',   ['as' => 'password.send',   'uses' => 'Auth\Pass
 // Password reset routes...
 Route::get('password/reset/{token}',    ['as' => 'password.reset',  'uses' => 'Auth\PasswordController@getReset']);
 Route::post('password/reset',           ['as' => 'password.accept', 'uses' => 'Auth\PasswordController@postReset']);
+
+// Products routes...
+Route::resource('products', 'ProductsController');

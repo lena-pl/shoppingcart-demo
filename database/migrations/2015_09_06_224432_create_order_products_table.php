@@ -16,8 +16,8 @@ class CreateOrderProductsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('order_id')->unsigned();
-            $table->integer('quantity')->unsigned();
-            $table->decimal('price', 5, 2);
+            $table->integer('quantity')->unsigned()->default(1);
+            $table->decimal('price', 6, 2)->default(1.00);
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
@@ -25,7 +25,7 @@ class CreateOrderProductsTable extends Migration
                 ->onUpdate('cascade');
             $table->foreign('order_id')->references('id')->on('orders')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('restrict');
 
             $table->unique(['product_id', 'order_id']);
         });

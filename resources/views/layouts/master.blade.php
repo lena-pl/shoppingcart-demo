@@ -45,6 +45,7 @@
             <li class="{{ Route::currentRouteName() === 'home' ? 'active' : null }}"><a href="{{ route('home') }}">Home</a></li>
             <li class="{{ Route::currentRouteName() === 'about' ? 'active' : null }}"><a href="{{ route('about') }}">About</a></li>
             <li class="{{ Route::currentRouteName() === 'contact' ? 'active' : null }}"><a href="{{ route('contact') }}">Contact</a></li>
+            <li class="{{ Route::currentRouteName() === 'products.index' ? 'active' : null }}"><a href="{{ route('products.index') }}">Products</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

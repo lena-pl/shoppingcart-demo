@@ -15,8 +15,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->enum('order_status', ['cart', 'finalised', 'shipped'])->default('cart');
-            $table->decimal('total_price', 7, 2);
+            $table->string('order_status');
+            $table->decimal('total_price', 10, 2)->unsigned();
             $table->text('shipping_address');
             $table->string('shipping_method');
             $table->boolean('payment_received')->default(0);
@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('restrict');
         });
     }
 
