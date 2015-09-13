@@ -27,12 +27,15 @@ class CartController extends Controller
         return view('cart.index', compact('order', 'products'));
     }
 
-    public function addProduct()
+    public function addProduct(Request $request)
     {
         $order = Auth::user()->cart();
-        $product = Product::findOrFail(Input::get('product_id'));
 
-        $order->products()->attach(Input::get('product_id'));
+        $product_id = $request->input('product_id');
+        $product = Product::findOrFail($product_id);
+
+        $order->products()->attach($product->id);
+        $order->save();
 
         return redirect()->route('cart');
     }
