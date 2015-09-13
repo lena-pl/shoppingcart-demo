@@ -16,7 +16,11 @@
       <p class="lead">${{ $product->price }}</p>
       <p>{{ $product->description }}</p>
       @if(Auth::check())
-        <a class="btn btn-success" href="{{ route('cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+        {!! Form::open(['route' => 'cart.add', 'class' => 'form-horizontal']) !!}
+          {!! Form::hidden('product_id', $product->id) !!}
+          <button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
+        {!! Form::close() !!}
+        {{-- <a class="btn btn-success" href="{{ route('cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a> --}}
       @else
         <p class="lead">Please <a href="{{ route('auth.login') }}">log in</a> to purchase this product.</p>
       @endif

@@ -13,7 +13,7 @@
       </tr>
       </thead>
       <tbody>
-        @foreach($products as $product)
+        @forelse($products as $product)
           <tr>
             <td>
               <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
@@ -22,7 +22,11 @@
             <td><span class="pull-right">{{ $product->pivot->quantity }}</span></td>
             <td><span class="pull-right">${{ number_format($product->price * $product->pivot->quantity, 2) }}</span></td>
           </tr>
-        @endforeach
+        @empty
+          <tr>
+            <td colspan="4" class="text-center text-muted">Your cart is empty.</td>
+          </tr>
+        @endforelse
       </tbody>
     </table>
   </div>

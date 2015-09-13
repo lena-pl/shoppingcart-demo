@@ -17,6 +17,7 @@ Route::get('contact',           ['as' => 'contact', 'uses' => 'PagesController@c
 
 // Cart methods
 Route::get('cart',              ['as' => 'cart', 'uses' => 'CartController@index']);
+Route::post('cart/add',         ['as' => 'cart.add', 'uses' => 'CartController@addProduct']);
 
 Route::get('profile',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);

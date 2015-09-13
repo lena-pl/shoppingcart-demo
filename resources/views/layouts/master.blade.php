@@ -50,6 +50,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
+              <li class="{{ Route::currentRouteName() === 'cart' ? 'active' : null }}"><a href="{{ route('cart') }}">My Cart</a></li>
               <li><a href="{{ route('profile.edit') }}">{{ Auth::user()->name }}</a></li>
               <li><a href="{{ route('auth.logout') }}">Logout</a></li>
             @else
