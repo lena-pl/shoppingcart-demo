@@ -18,6 +18,8 @@ Route::get('contact',           ['as' => 'contact', 'uses' => 'PagesController@c
 // Cart methods
 Route::get('cart',              ['as' => 'cart', 'uses' => 'CartController@index']);
 Route::post('cart/add',         ['as' => 'cart.add', 'uses' => 'CartController@addProduct']);
+Route::post('cart/remove',      ['as' => 'cart.remove', 'uses' => 'CartController@removeProduct']);
+Route::post('cart/update',      ['as' => 'cart.update', 'uses' => 'CartController@updateQuantities']);
 
 Route::get('profile',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
