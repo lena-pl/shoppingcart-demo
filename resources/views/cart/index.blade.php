@@ -39,6 +39,10 @@
             <td colspan="4" class="text-center text-muted">Your cart is empty.</td>
           </tr>
         @endforelse
+          <tr>
+            <td colspan="3"><span class="pull-right"><strong>Subtotal</strong></span></td>
+            <td><span class="pull-right"><strong>${{ number_format($order->subtotal(), 2) }}</strong></span></td>
+          </tr>
       </tbody>
     </table>
     <button class="btn btn-primary pull-right">Update Quantities</button>

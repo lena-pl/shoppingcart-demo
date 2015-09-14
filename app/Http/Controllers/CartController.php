@@ -36,10 +36,14 @@ class CartController extends Controller
         $existingProduct = $order->products()->where('product_id', $product->id)->first();
         if ($existingProduct) {
             $existingProduct->pivot->quantity += 1;
+            $existingProduct->pivot->price = $product->price;
             $existingProduct->pivot->save();
         } else {
             $quantity = 1;
-            $order->products()->attach($product->id, ['quantity' => $quantity]);
+            $order->products()->attach($product->id, [
+                'quantity' => $quantity,
+                'price' => $product->price,
+                ]);
         }
 
         return redirect()->route('cart');
@@ -61,14 +65,19 @@ class CartController extends Controller
     {
         $quantities = $request->input('quantity');
 
+        $order = Auth::user()->cart();
+        $existingProducts = $order->products->keyBy('id');
+
         $products = [];
         foreach($quantities as $product_id => $quantity) {
             if ($quantity > 0) {
-                $products[$product_id] = ['quantity' => $quantity];
+                $products[$product_id] = [
+                    'quantity' => $quantity,
+                    'price' => $existingProducts[$product_id]->price,
+                ];
             }
         }
 
-        $order = Auth::user()->cart();
         $order->products()->sync($products);
 
         return redirect()->route('cart');

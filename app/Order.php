@@ -28,4 +28,14 @@ class Order extends Model
         ->withTimestamps();
     }
 
+    public function subtotal()
+    {
+        $products = $this->products;
+        $subtotal = 0;
+        foreach ($products as $product) {
+            $subtotal += ($product->pivot->quantity * $product->pivot->price);
+        }
+        return $subtotal;
+    }
+
 }
