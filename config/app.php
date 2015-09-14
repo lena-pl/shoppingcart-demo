@@ -149,6 +149,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 
+        Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
+
     ],
 
     /*
@@ -200,6 +202,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Omnipay' => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
     ],
 
 ];
