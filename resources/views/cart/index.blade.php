@@ -45,7 +45,15 @@
           </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary pull-right">Update Quantities</button>
+    <div class="row">
+      <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-refresh"></span> Update Quantities</button>
+    </div>
     {!! Form::close() !!}
+
+    <div class="row">
+      {!! Form::open(['route' => 'pxpay.purchase']) !!}
+        <button class="btn btn-success pull-right"><span class="glyphicon glyphicon-shopping-cart"></span> Proceed to Payment</button>
+      {!! Form::close() !!}
+    </div>
   </div>
 @endsection

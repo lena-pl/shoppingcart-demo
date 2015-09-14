@@ -15,11 +15,17 @@ Route::get('/',                 ['as' => 'home',    'uses' => 'PagesController@h
 Route::get('about',             ['as' => 'about',   'uses' => 'PagesController@about']);
 Route::get('contact',           ['as' => 'contact', 'uses' => 'PagesController@contact']);
 
-// Cart methods
+// Cart routes...
 Route::get('cart',              ['as' => 'cart', 'uses' => 'CartController@index']);
 Route::post('cart/add',         ['as' => 'cart.add', 'uses' => 'CartController@addProduct']);
 Route::post('cart/remove',      ['as' => 'cart.remove', 'uses' => 'CartController@removeProduct']);
 Route::post('cart/update',      ['as' => 'cart.update', 'uses' => 'CartController@updateQuantities']);
+
+// PxPay routes...
+Route::get('pxpay/test',        ['as' => 'pxpay.test',      'uses' => 'PaymentController@sendTestPurchase']);
+Route::get('pxpay/return',      ['as' => 'pxpay.return',    'uses' => 'PaymentController@confirmPurchase']);
+Route::get('pxpay/cancel',      ['as' => 'pxpay.cancel',    'uses' => 'PaymentController@cancelPurchase']);
+Route::post('pxpay/purchase',    ['as' => 'pxpay.purchase',  'uses' => 'PaymentController@sendPurchase']);
 
 Route::get('profile',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
